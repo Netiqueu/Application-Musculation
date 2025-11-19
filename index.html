@@ -9,10 +9,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #212121;
+            background: #f4f4f4;
         }
         header {
-            background: #171717;
+            background: #222;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -429,15 +429,6 @@
             document.getElementById('muscle-groups').style.display = 'flex';
             document.getElementById('exercises').style.display = 'none';
         }
-
-        window.addEventListener("load", () => {
-            for (const muscle in data) {
-                data[muscle].forEach(ex => {
-                    const preload = new Image();
-                    preload.src = ex.img;
-                });
-            }
-        });
     </script>
 </body>
 </html>
