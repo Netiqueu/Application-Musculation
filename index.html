@@ -12,10 +12,18 @@
             background: #f4f4f4;
         }
         header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 600px;
             background: #222;
             color: #fff;
             padding: 15px;
             text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         h1 {
             margin: 0;
@@ -23,12 +31,14 @@
         }
         .container {
             padding: 10px;
+            padding-top: 20%;
         }
         .muscle-groups {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
+            padding-top: 20px;
         }
         .muscle-card {
             background: #fff;
@@ -49,64 +59,54 @@
             object-fit: cover;
         }
         .exercises {
-            margin-top: 20px;
+            
         }
         .exercise {
             background: #fff;
-            margin-bottom: 15px;
             padding: 10px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             text-align: center;
             width: 80%;
-            height: 80%;
-            margin-left: auto;
-            margin-right: auto;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto 15px;
         }
         .exercise img {
             width: 80%;
             border-radius: 8px;
         }
         .back-btn {
-            all: unset;
-            display: inline-block;
+            position: fixed;
+            top: 10%;
             padding: 8px 12px;
             background: #222;
             color: #fff;
+            border: none;
             border-radius: 5px;
-            text-align: center;
             cursor: pointer;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1;
-            text-decoration: none;
-            user-select: none;
-            margin-bottom: 10px;
         }
         .back-btn:hover {
             background: #444;
         }
         p.serie {
             margin: 0;
-            margin-top: 5px;
             padding: 0;
             color: #ffffff77;
             font-size: 14px;
         }
-        hr {
-            border: none;
-            height: 1px;
-            background: #00000000;
-            margin: 5px 0;
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            padding-top: 10px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Training Muscu</h1>
-        <hr>
-        <p class="serie">Masse : 10 reps x 4 (repos 1 min)</p>
-        <p class="serie">Endurance : 15 reps x 3 (repos 30 s)</p>
+        <p class="serie"></p>
+        <p class="serie"></p>
     </header>
 
     <div class="container" id="main-container">
@@ -150,6 +150,10 @@
             <div class="muscle-card" onclick="showExercises('Mollets')">
                 <img src="https://www.docteur-fitness.com/wp-content/uploads/2021/10/extension-mollets-barre-debout-mollets.jpg">
                 <p>Mollets</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Minceur')">
+                <img src="https://www.docteur-fitness.com/wp-content/uploads/2022/07/jumping-jack-exercice-cardio-jambes.jpg">
+                <p>Minceur</p>
             </div>
         </div>
 
@@ -434,15 +438,91 @@
                 { name: "Extensions des mollets assis à la Smith machine", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/08/extension-mollets-assis-machine-smith.gif", desc: "" },
                 { name: "Extensions des mollets debout à la Smith machine", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/08/extension-mollets-smith-machine.gif", desc: "" },
                 { name: "Extensions des mollets sur une marche", img: "https://www.docteur-fitness.com/wp-content/uploads/2021/10/extension-mollets-sur-marche.gif", desc: "" },
+            ],
+            Minceur: [
+                { name: "Burpees", img: "https://www.docteur-fitness.com/wp-content/uploads/2019/08/burpee-muscle-sollicites.gif", desc: "" },
+                { name: "Jumping jack", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/07/jumping-jack.gif", desc: "" },
+                { name: "Corde à sauter", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/07/corde-a-sauter.gif", desc: "" },
+                { name: "Mountain climber", img: "https://www.docteur-fitness.com/wp-content/uploads/2000/06/mountain-climber-exercice-musculation.gif", desc: "" },
+                { name: "Skater hops", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/07/skater-hops.gif", desc: "" },
+                { name: "Marche de l’ours", img: "https://www.docteur-fitness.com/wp-content/uploads/2023/05/marche-ours-bear-crawl-exercice-cardiovasculaire-cardio-aerobie-abdominaux.gif", desc: "" },
+                { name: "Box jump", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/09/jump-box.gif", desc: "" },
+                { name: "Wall ball squat", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/09/wall-ball-squat.gif", desc: "" }
             ]
         };
 
+        const serieTexts = {
+            Épaules: [
+                "Masse : 10 reps x 4 (repos 1 min)",
+                "Endurance : 15 reps x 3 (repos 30 s)"
+            ],
+            Biceps: [
+                "Masse : 12 reps x 3 (repos 1 min)",
+                "Endurance : 20 reps x 2 (repos 30 s)"
+            ],
+            Triceps: [
+                "Masse : 8 reps x 4 (repos 1 min)",
+                "Endurance : 15 reps x 3 (repos 45 s)"
+            ],
+            Pectoraux: [
+                "Masse : 10 reps x 4 (repos 1 min)",
+                "Endurance : 12 reps x 3 (repos 45 s)"
+            ],
+            Dos: [
+                "Masse : 10 reps x 4 (repos 1 min)",
+                "Endurance : 15 reps x 3 (repos 45 s)"
+            ],
+            Abdominaux: [
+                "12 reps x 4 (repos 1 min)",
+                "45 s - 1 min x 3 (repos 30 s)"
+            ],
+            Fessiers: [
+                "Masse : 12 reps x 4 (repos 1 min)",
+                "Endurance : 15 reps x 3 (repos 30 s)"
+            ],
+            Quadriceps: [
+                "Masse : 10 reps x 4 (repos 1 min)",
+                "Endurance : 12 reps x 3 (repos 1 min)"
+            ],
+            Ischiojambiers: [
+                "Masse : 12 reps x 4 (repos 1 min)",
+                "Endurance : 10 reps x 3 (repos 1 min)"
+            ],
+            Mollets: [
+                "Masse : 15 reps x 4 (repos 30 s)",
+                "Endurance : 12 reps x 3 (repos 30 s)"
+            ],
+            Minceur: [
+                "12 reps x 4 (repos 1 min)",
+                "45 s - 1 min x 3 (repos 30 s)"
+            ]
+        };
+
+        function updateSerieTexts(muscle) {
+            const pElements = document.querySelectorAll("p.serie");
+            const texts = serieTexts[muscle] || ["", ""];
+            
+            pElements.forEach((p, index) => {
+                p.textContent = texts[index] || "";
+            });
+        }
+
         function showExercises(muscle) {
+            updateSerieTexts(muscle);
+
             const exContainer = document.getElementById('exercises');
             const groupsContainer = document.getElementById('muscle-groups');
+            const title = document.querySelector('h1');
+
+            // Cacher la page des groupes et afficher les exercices
             groupsContainer.style.display = 'none';
             exContainer.style.display = 'block';
-            exContainer.innerHTML = `<button class="back-btn" onclick="backToGroups()">⬅ Retour</button>`;
+
+            // Vider le titre quand on est sur un exercice
+            title.textContent = "";
+
+            // Reset le contenu de exContainer et ajouter le bouton retour
+            exContainer.innerHTML = `<button class="back-btn" onclick="backToGroups()">⬅</button>`;
 
             data[muscle].forEach(ex => {
                 const div = document.createElement('div');
@@ -450,11 +530,26 @@
                 div.innerHTML = `<h3>${ex.name}</h3><img src="${ex.img}" alt="${ex.name}"><p>${ex.desc}</p>`;
                 exContainer.appendChild(div);
             });
+
+            window.scrollTo(0, 0);
         }
 
         function backToGroups() {
             document.getElementById('muscle-groups').style.display = 'flex';
             document.getElementById('exercises').style.display = 'none';
+
+            // Remettre le titre
+            const title = document.querySelector('h1');
+            title.textContent = "Training Muscu";
+
+            // Remettre le texte initial des <p>
+            const pElements = document.querySelectorAll("p.serie");
+            pElements.forEach((p, index) => {
+                if (index === 0) p.textContent = "";
+                else p.textContent = "";
+            });
+
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
