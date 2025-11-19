@@ -58,28 +58,55 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
+            width: 80%;
+            height: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
         .exercise img {
-            width: 100%;
+            width: 80%;
             border-radius: 8px;
         }
         .back-btn {
-            margin: 10px 0;
+            all: unset;
+            display: inline-block;
             padding: 8px 12px;
             background: #222;
             color: #fff;
-            border: none;
             border-radius: 5px;
+            text-align: center;
             cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1;
+            text-decoration: none;
+            user-select: none;
+            margin-bottom: 10px;
         }
         .back-btn:hover {
             background: #444;
+        }
+        p.serie {
+            margin: 0;
+            margin-top: 5px;
+            padding: 0;
+            color: #ffffff77;
+            font-size: 14px;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background: #00000000;
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Training Muscu</h1>
+        <hr>
+        <p class="serie">Masse : 10 reps x 4 (repos 1 min)</p>
+        <p class="serie">Endurance : 15 reps x 3 (repos 30 s)</p>
     </header>
 
     <div class="container" id="main-container">
