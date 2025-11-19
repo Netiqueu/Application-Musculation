@@ -47,7 +47,6 @@
             width: 100px;
             height: 100px;
             object-fit: cover;
-            border-radius: 50%;
         }
         .exercises {
             margin-top: 20px;
@@ -58,6 +57,7 @@
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: center;
         }
         .exercise img {
             width: 100%;
@@ -84,21 +84,45 @@
 
     <div class="container" id="main-container">
         <div class="muscle-groups" id="muscle-groups">
-            <div class="muscle-card" onclick="showExercises('pectoraux')">
-                <img src="1.png" alt="Pectoraux">
+            <div class="muscle-card" onclick="showExercises('Épaules')">
+                <img src="1.png">
+                <p>Épaules</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Biceps')">
+                <img src="2.png">
+                <p>Biceps</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Triceps')">
+                <img src="3.png">
+                <p>Triceps</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Pectoraux')">
+                <img src="4.png">
                 <p>Pectoraux</p>
             </div>
-            <div class="muscle-card" onclick="showExercises('dos')">
-                <img src="1.png" alt="Dos">
+            <div class="muscle-card" onclick="showExercises('Dos')">
+                <img src="5.png">
                 <p>Dos</p>
             </div>
-            <div class="muscle-card" onclick="showExercises('jambes')">
-                <img src="1.png" alt="Jambes">
-                <p>Jambes</p>
+            <div class="muscle-card" onclick="showExercises('Abdominaux')">
+                <img src="6.png">
+                <p>Abdominaux</p>
             </div>
-            <div class="muscle-card" onclick="showExercises('bras')">
-                <img src="1.png" alt="Bras">
-                <p>Bras</p>
+            <div class="muscle-card" onclick="showExercises('Fessiers')">
+                <img src="7.png">
+                <p>Fessiers</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Quadriceps')">
+                <img src="8.png">
+                <p>Quadriceps</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Ischio-jambiers')">
+                <img src="9.png">
+                <p>Ischio-jambiers</p>
+            </div>
+            <div class="muscle-card" onclick="showExercises('Mollets')">
+                <img src="10.png">
+                <p>Mollets</p>
             </div>
         </div>
 
@@ -107,22 +131,41 @@
 
     <script>
         const data = {
-            pectoraux: [
-                { name: "Développé couché", img: "1.png", desc: "Allongé sur un banc, soulevez la barre." },
-                { name: "Pompes", img: "1.png", desc: "Classique pompes au sol." }
+            Épaules: [
+                { name: "Développé épaules assis", img: "11.gif", desc: "" },
+                { name: "Russian twist avec développé épaules", img: "12.gif", desc: "" },
+                { name: "Développé militaire", img: "13.gif", desc: "" },
+                { name: "Développé Arnold", img: "14.gif", desc: "" },
+                { name: "Développé épaules avec haltères", img: "15.gif", desc: "" },
+                { name: "Élévations frontales", img: "16.gif", desc: "" },
+                { name: "Élévations latérales", img: "17.gif", desc: "" },
+                { name: "Élévations latérales avec kettlebell", img: "18.gif", desc: "" },
+                { name: "Tirage menton avec kettlebell", img: "19.gif", desc: "" },
+                { name: "Développé épaule avec kettlebell", img: "110.gif", desc: "" },
+                { name: "Oiseau assis sur un banc", img: "111.gif", desc: "" },
+                { name: "Pompes piquées", img: "112.gif", desc: "" },
+                { name: "Croix de fer avec haltères", img: "113.gif", desc: "" },
+                { name: "Thruster avec kettlebell", img: "114.gif", desc: "" },
+                { name: "Rotations cubaines", img: "115.gif", desc: "" }
             ],
-            dos: [
-                { name: "Tractions", img: "1.png", desc: "Suspendez-vous à la barre et montez." },
-                { name: "Rowing", img: "1.png", desc: "Tirez la barre vers votre poitrine." }
+            Biceps: [
+                { name: "Curl à la barre", img: "21.gif", desc: "" },
+                { name: "Curl concentré", img: "22.gif", desc: "" },
+                { name: "Curl pupitre barre EZ", img: "23.gif", desc: "" },
+                { name: "Curl haltère debout sur banc incliné", img: "24.gif", desc: "" },
+                { name: "Curl Spider", img: "25.gif", desc: "" },
+                { name: "Curl haltère incliné avec rotation", img: "26.gif", desc: "" },
+                { name: "Traction supination", img: "27.gif", desc: "" },
+                { name: "Curl Zottman", img: "28.gif", desc: "" },
+                { name: "Drag curl avec haltères", img: "29.gif", desc: "" },
+                { name: "Curl inversé à la barre", img: "210.gif", desc: "" },
+                { name: "Curl haltères prise neutre", img: "211.gif", desc: "" },
+                { name: "Drag curl", img: "212.gif", desc: "" },
+                { name: "Curl biceps alterné avec haltères", img: "213.gif", desc: "" },
+                { name: "Waiter curl", img: "214.gif", desc: "" },
+                { name: "Curl biceps alterné en supination sur banc incliné", img: "215.gif", desc: "" },
+                { name: "Curl haltère prise marteau au pupitre", img: "216.gif", desc: "" }
             ],
-            jambes: [
-                { name: "Squat", img: "1.png", desc: "Pliez les jambes jusqu'à 90°." },
-                { name: "Fentes", img: "1.png", desc: "Avancez une jambe et pliez le genou." }
-            ],
-            bras: [
-                { name: "Curl biceps", img: "1.png", desc: "Soulevez les haltères pour les biceps." },
-                { name: "Extensions triceps", img: "1.png", desc: "Soulevez l'haltère derrière la tête." }
-            ]
         };
 
         function showExercises(muscle) {
