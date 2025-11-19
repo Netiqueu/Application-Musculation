@@ -9,10 +9,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4;
+            background: #212121;
         }
         header {
-            background: #222;
+            background: #171717;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -143,7 +143,7 @@
                 { name: "Tirage menton avec kettlebell", img: "https://www.docteur-fitness.com/wp-content/uploads/2021/12/tirage-menton-avec-kettlebell.gif", desc: "" },
                 { name: "Développé épaule avec kettlebell", img: "https://www.docteur-fitness.com/wp-content/uploads/2021/12/developpe-epaule-avec-kettlebell.gif", desc: "" },
                 { name: "Oiseau assis sur un banc", img: "https://www.docteur-fitness.com/wp-content/uploads/2021/12/oiseau-assis-sur-banc.gif", desc: "" },
-                { name: "Pompes piquées", img: "", desc: "https://www.docteur-fitness.com/wp-content/uploads/2022/06/pike-push-up.gif" },
+                { name: "Pompes piquées", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/06/pike-push-up.gif", desc: "" },
                 { name: "Croix de fer avec haltères", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/04/croix-de-fer-halteres.gif", desc: "" },
                 { name: "Thruster avec kettlebell", img: "https://www.docteur-fitness.com/wp-content/uploads/2021/12/thruster-kettlebell.gif", desc: "" },
                 { name: "Rotations cubaines", img: "https://www.docteur-fitness.com/wp-content/uploads/2022/06/rotation-externe-vertical-epaule-haltere.gif", desc: "" }
@@ -429,6 +429,15 @@
             document.getElementById('muscle-groups').style.display = 'flex';
             document.getElementById('exercises').style.display = 'none';
         }
+
+        window.addEventListener("load", () => {
+            for (const muscle in data) {
+                data[muscle].forEach(ex => {
+                    const preload = new Image();
+                    preload.src = ex.img;
+                });
+            }
+        });
     </script>
 </body>
 </html>
